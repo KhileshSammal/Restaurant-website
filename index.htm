@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customwale Foods</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Custom Tailwind Configuration for Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'playfair': ['"Playfair Display"', 'serif'],
+                        'roboto': ['"Roboto"', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-bg': '#f9f8f4',
+                        'dark-text': '#2c3e50',
+                        'accent-green': '#355e3b',
+                        'light-gray': '#e5e7eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Modal specific styles */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body class="bg-primary-bg text-dark-text font-roboto">
+    <!-- Header with Navigation -->
+    <header class="bg-white shadow-lg fixed top-0 left-0 right-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-3xl font-playfair font-bold text-accent-green mb-4 md:mb-0">
+                Customwale Foods
+            </div>
+            <ul class="flex flex-wrap justify-center md:justify-end space-x-4 md:space-x-8 text-lg font-medium">
+                <li><a href="#menu" class="hover:text-accent-green transition-colors duration-300">Menu</a></li>
+                <li><a href="#reservations" class="hover:text-accent-green transition-colors duration-300">Reservations</a></li>
+                <li><a href="#story" class="hover:text-accent-green transition-colors duration-300">Our Story</a></li>
+                <li><a href="#founders" class="hover:text-accent-green transition-colors duration-300">Founders</a></li>
+                <li><a href="#gallery" class="hover:text-accent-green transition-colors duration-300">Gallery</a></li>
+                <li><a href="#testimonials" class="hover:text-accent-green transition-colors duration-300">Reviews</a></li>
+                <li><a href="#contact" class="hover:text-accent-green transition-colors duration-300">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="pt-24 md:pt-32">
+        <!-- Hero Section -->
+        <section class="hero-section relative bg-cover bg-center h-screen flex items-center justify-center text-center"
+                 style="background-image: url('https://placehold.co/1920x1080/4f6f52/e8f8e8?text=Luxury+in+Every+Bite');">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="relative z-10 text-white p-6 rounded-lg">
+                <h1 class="text-6xl md:text-8xl font-playfair font-bold drop-shadow-lg">Customwale Foods</h1>
+                <p class="text-2xl md:text-3xl font-roboto mt-4 drop-shadow-md">Luxury in Every Bite</p>
+                <a href="#menu" class="cta-button mt-8 inline-block px-8 py-4 bg-accent-green text-white text-lg font-bold rounded-full shadow-lg hover:bg-green-700 transition-transform duration-300 transform hover:scale-105">
+                    Explore Our Menu
+                </a>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section id="story" class="py-20 bg-primary-bg">
+            <div class="container mx-auto px-4 text-center max-w-4xl">
+                <h2 class="text-5xl font-playfair font-bold text-accent-green mb-8" id="story-heading">Our Story</h2>
+                <p class="text-lg text-dark-text leading-relaxed">
+                    In a world where food often follows formulas, Customwale Foods was born from a different idea —
+                    that true luxury lies in personalization, not pre-sets. Founded by culinary obsessives who believe that flavor should be as individual as your fingerprint,
+                    Customwale is more than just a place to eat — it’s a place to design your plate, your way.
+                    We blend age-old culinary techniques with a bespoke approach. Whether it's the spice level of your biryani,
+                    the aroma of your handpicked herbs, or the texture of your pasta, every detail is yours to command.
+                    But we didn’t stop at customization. We sourced rare ingredients from across India and beyond — saffron from Kashmir, heirloom rice from Tamil Nadu, cold-pressed oils from artisanal farms.
+                    Every dish we serve is a collaboration between your taste and our craft. This isn’t fast food. It’s flavor, fine-tuned. It’s for those who don’t just eat — they curate.
+                </p>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-5xl font-playfair font-bold text-center text-dark-text mb-12" id="menu-heading">Our Signature Menu</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <!-- Menu Item 1 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=Momos" alt="Steamed and fried momos with a dipping sauce." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">Momos</h3>
+                            <p class="text-sm text-dark-text">Tender steamed dumplings filled with spiced vegetables or chicken, served with our signature chili sauce.</p>
+                        </div>
+                    </article>
+                    <!-- Menu Item 2 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=Burger" alt="A gourmet burger with a juicy patty and fresh vegetables on a toasted bun." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">Burger</h3>
+                            <p class="text-sm text-dark-text">A classic burger elevated with a handcrafted patty, crisp lettuce, tomato, and our special sauce on a toasted bun.</p>
+                        </div>
+                    </article>
+                    <!-- Menu Item 3 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=Pasta" alt="A bowl of fresh pasta with a rich tomato sauce and basil." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">Pasta</h3>
+                            <p class="text-sm text-dark-text">Freshly made pasta tossed in a creamy alfredo or tangy marinara sauce, topped with parmesan and fresh herbs.</p>
+                        </div>
+                    </article>
+                    <!-- Menu Item 4 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=French+Fries" alt="Crispy golden french fries served in a paper cone." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">French Fries</h3>
+                            <p class="text-sm text-dark-text">Crispy, golden-brown French fries, lightly salted and perfect for a snack or a side dish.</p>
+                        </div>
+                    </article>
+                    <!-- Menu Item 5 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=Maggi" alt="A bowl of Maggi noodles with fresh vegetables." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">Maggi</h3>
+                            <p class="text-sm text-dark-text">The classic instant noodles, prepared with our special blend of spices and fresh vegetables for a comforting and delicious experience.</p>
+                        </div>
+                    </article>
+                    <!-- Menu Item 6 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=Bakery+Stuff" alt="Assorted freshly baked goods like pastries and cookies." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">Bakery Stuff</h3>
+                            <p class="text-sm text-dark-text">A selection of freshly baked goods, from croissants to artisanal bread, perfect for any time of day.</p>
+                        </div>
+                    </article>
+                    <!-- Menu Item 7 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=Cold+Drinks" alt="A variety of colorful cold drinks in tall glasses." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">Cold Drinks</h3>
+                            <p class="text-sm text-dark-text">Refreshing and cool beverages to complement your meal, including iced teas and handcrafted mocktails.</p>
+                        </div>
+                    </article>
+                    <!-- Menu Item 8 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=Rolls" alt="A savory roll filled with vegetables and sauce." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">Rolls</h3>
+                            <p class="text-sm text-dark-text">Spiced vegetables or paneer wrapped in a soft, flaky roll, served with a side of chutney.</p>
+                        </div>
+                    </article>
+                    <!-- Menu Item 9 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=Dosa" alt="A crispy dosa served with sambar and coconut chutney." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">Dosa</h3>
+                            <p class="text-sm text-dark-text">A paper-thin, crispy rice pancake served with a side of savory lentil stew and coconut chutney.</p>
+                        </div>
+                    </article>
+                    <!-- Menu Item 10 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=Chap" alt="A skewer of marinated and grilled soy chap." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">Chap</h3>
+                            <p class="text-sm text-dark-text">Delicious soy chap marinated in our special spices and grilled to perfection, served with mint chutney.</p>
+                        </div>
+                    </article>
+                    <!-- Menu Item 11 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=Chole+Bhature" alt="A plate of fluffy bhature with spicy chole." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">Chole Bhature</h3>
+                            <p class="text-sm text-dark-text">Fluffy fried bread (bhature) served with a rich and spicy chickpea curry (chole).</p>
+                        </div>
+                    </article>
+                    <!-- Menu Item 12 -->
+                    <article class="menu-item bg-primary-bg rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://placehold.co/400x300/f9f8f4/355e3b?text=Pav+Bhaji" alt="A plate of bhaji with buttered pav buns." class="w-full h-48 object-cover" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-playfair font-bold text-accent-green mb-2">Pav Bhaji</h3>
+                            <p class="text-sm text-dark-text">A spiced vegetable curry (bhaji) served with soft, buttered bread rolls (pav) and a squeeze of lime.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Reservations Section -->
+        <section id="reservations" class="py-20 bg-primary-bg">
+            <div class="container mx-auto px-4 max-w-2xl text-center">
+                <h2 class="text-5xl font-playfair font-bold text-accent-green mb-4" id="reservations-heading">Book a Table</h2>
+                <p class="text-lg text-dark-text mb-8">Experience our bespoke dining service. Reserve your table for an unforgettable culinary journey.</p>
+                <form id="reservation-form" class="bg-white p-8 rounded-xl shadow-xl space-y-6">
+                    <div class="flex flex-col text-left">
+                        <label for="name" class="text-lg font-bold mb-2">Name</label>
+                        <input type="text" id="name" name="name" required class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
+                    </div>
+                    
+                    <div class="flex flex-col text-left">
+                        <label for="email" class="text-lg font-bold mb-2">Email</label>
+                        <input type="email" id="email" name="email" required class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
+                    </div>
+    
+                    <div class="flex flex-col text-left">
+                        <label for="phone" class="text-lg font-bold mb-2">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
+                    </div>
+    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col text-left">
+                            <label for="date" class="text-lg font-bold mb-2">Date</label>
+                            <input type="date" id="date" name="date" required class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
+                        </div>
+                        <div class="flex flex-col text-left">
+                            <label for="time" class="text-lg font-bold mb-2">Time</label>
+                            <input type="time" id="time" name="time" required class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
+                        </div>
+                    </div>
+    
+                    <div class="flex flex-col text-left">
+                        <label for="guests" class="text-lg font-bold mb-2">Number of Guests</label>
+                        <input type="number" id="guests" name="guests" min="1" max="10" value="2" required class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
+                    </div>
+    
+                    <button type="submit" class="submit-button w-full py-4 bg-accent-green text-white text-xl font-bold rounded-full shadow-lg hover:bg-green-700 transition-transform duration-300 transform hover:scale-105">
+                        Reserve Now
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Founders Section -->
+        <section id="founders" class="py-20 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-5xl font-playfair font-bold text-dark-text mb-12" id="founders-heading">Founders</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <!-- Founder Card 1 -->
+                    <article class="founder-card bg-primary-bg p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="ABC, Founder of Customwale Foods" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-accent-green" />
+                        <h3 class="text-3xl font-playfair font-bold text-accent-green mt-6 mb-2">ABC</h3>
+                        <p class="text-sm text-dark-text leading-relaxed">Chief Culinary Officer — A master of flavor fusion and authentic tastes.</p>
+                    </article>
+                    <!-- Founder Card 2 -->
+                    <article class="founder-card bg-primary-bg p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="ABC, Founder of Customwale Foods" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-accent-green" />
+                        <h3 class="text-3xl font-playfair font-bold text-accent-green mt-6 mb-2">ABC</h3>
+                        <p class="text-sm text-dark-text leading-relaxed">Head of Innovation — The mastermind behind our bespoke customization platform.</p>
+                    </article>
+                    <!-- Founder Card 3 -->
+                    <article class="founder-card bg-primary-bg p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="ABC, Founder of Customwale Foods" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-accent-green" />
+                        <h3 class="text-3xl font-playfair font-bold text-accent-green mt-6 mb-2">ABC</h3>
+                        <p class="text-sm text-dark-text leading-relaxed">Operations Lead — Ensuring every dish is served with perfection and care.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20 bg-primary-bg">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-5xl font-playfair font-bold text-accent-green mb-4" id="gallery-heading">Photo Gallery</h2>
+                <p class="text-lg text-dark-text mb-12">A glimpse into our world of culinary craftsmanship and bespoke dining.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105"><img src="https://placehold.co/600x450/f9f8f4/355e3b?text=Kitchen+View" alt="A beautifully plated dish" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105"><img src="https://placehold.co/600x450/f9f8f4/355e3b?text=Chef+at+Work" alt="A chef preparing a meal" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105"><img src="https://placehold.co/600x450/f9f8f4/355e3b?text=Dining+Area" alt="The elegant interior of the restaurant" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105"><img src="https://placehold.co/600x450/f9f8f4/355e3b?text=Appetizer+Plate" alt="A signature cocktail" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105"><img src="https://placehold.co/600x450/f9f8f4/355e3b?text=Main+Course" alt="A decadent dessert" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105"><img src="https://placehold.co/600x450/f9f8f4/355e3b?text=Fresh+Ingredients" alt="Fresh, premium ingredients" class="w-full h-full object-cover"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-white">
+            <div class="container mx-auto px-4 text-center max-w-4xl">
+                <h2 class="text-5xl font-playfair font-bold text-dark-text mb-4" id="testimonials-heading">What Our Guests Say</h2>
+                <p class="text-lg text-dark-text mb-12">Don't just take our word for it—see what our cherished patrons have to say.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <article class="testimonial-card bg-primary-bg p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <div class="rating text-xl text-yellow-500 mb-4">⭐⭐⭐⭐⭐</div>
+                        <blockquote class="italic text-dark-text mb-4">"The food was absolutely divine. The ability to customize my dish made the experience truly unique and unforgettable."</blockquote>
+                        <p class="author font-bold text-accent-green">— Rohit V.</p>
+                    </article>
+                    <!-- Testimonial Card 2 -->
+                    <article class="testimonial-card bg-primary-bg p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <div class="rating text-xl text-yellow-500 mb-4">⭐⭐⭐⭐⭐</div>
+                        <blockquote class="italic text-dark-text mb-4">"From the moment we walked in, the service was impeccable. A must-visit for anyone who appreciates fine dining with a personal touch."</blockquote>
+                        <p class="author font-bold text-accent-green">— Anjali K.</p>
+                    </article>
+                    <!-- Testimonial Card 3 -->
+                    <article class="testimonial-card bg-primary-bg p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <div class="rating text-xl text-yellow-500 mb-4">⭐⭐⭐⭐⭐</div>
+                        <blockquote class="italic text-dark-text mb-4">"I've never had a biryani this good! The flavors were perfectly balanced, and the quality of the ingredients was exceptional. I'll definitely be back."</blockquote>
+                        <p class="author font-bold text-accent-green">— Vikram P.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-primary-bg">
+            <div class="container mx-auto px-4 text-center max-w-2xl">
+                <h2 class="text-5xl font-playfair font-bold text-accent-green mb-8" id="contact-heading">Contact Us</h2>
+                <div class="space-y-4 text-lg text-dark-text">
+                    <p>Phone: <a href="tel:+919000000000" class="hover:text-accent-green transition-colors duration-300">+91 90000 00000</a></p>
+                    <p>Email: <a href="mailto:customwalefoods@example.com" class="hover:text-accent-green transition-colors duration-300">customwalefoods@example.com</a></p>
+                    <p>Address: 123 Gourmet Street, Foodie City, India</p>
+                </div>
+
+                <div class="map-container mt-12 rounded-xl overflow-hidden shadow-lg border-4 border-white">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019960698328!2d144.96305831567436!3d-37.81410797975168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43c4c8c7e3%3A0x2bcb16863e37e1a2!2sGourmet%20Street!5e0!3m2!1sen!2sin!4v1611234567890!5m2!1sen!2sin"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Customwale Foods Location"
+                        class="w-full h-80"
+                    ></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-accent-green text-white py-8 text-center">
+        <p>&copy; 2025 Customwale Foods. All rights reserved.</p>
+    </footer>
+
+    <!-- Confirmation Modal HTML -->
+    <div id="reservation-modal" class="modal-backdrop">
+        <div class="modal-content bg-white p-8 rounded-xl shadow-2xl text-center relative max-w-sm w-11/12 mx-auto">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-500 hover:text-dark-text text-3xl transition-colors duration-300">&times;</button>
+            <h3 class="text-3xl font-playfair font-bold text-accent-green mb-4">Reservation Confirmed!</h3>
+            <p class="text-lg text-dark-text">Thank you for your reservation. We've received your request and will be in touch shortly to confirm all the details.</p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Get all necessary elements from the DOM
+        const reservationForm = document.getElementById('reservation-form');
+        const reservationModal = document.getElementById('reservation-modal');
+        const closeModalBtn = document.querySelector('.modal-close-btn');
+
+        // Add event listener for form submission
+        reservationForm.addEventListener('submit', function(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+            
+            // Get form data (you would send this to a server in a real application)
+            const formData = new FormData(reservationForm);
+            const name = formData.get('name');
+            console.log(`Reservation submitted by: ${name}`);
+
+            // Simulate a successful form submission by showing the modal
+            reservationModal.style.display = 'flex';
+            
+            // Reset the form fields after submission
+            reservationForm.reset();
+        });
+
+        // Add event listener to close the modal
+        closeModalBtn.addEventListener('click', function() {
+            reservationModal.style.display = 'none';
+        });
+
+        // Close the modal if the user clicks outside of the content
+        reservationModal.addEventListener('click', function(event) {
+            if (event.target === reservationModal) {
+                reservationModal.style.display = 'none';
+            }
+        });
+
+        // Set today's date as the default and minimum for the date input
+        window.onload = function() {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('date');
+            if (dateInput) {
+                dateInput.setAttribute('min', today);
+                dateInput.value = today;
+            }
+        };
+    </script>
+</body>
+</html>
