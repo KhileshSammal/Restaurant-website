@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 
-    <!-- Custom Tailwind Configuration for Fonts -->
+    <!-- Custom Tailwind Configuration for Fonts and Colors -->
     <script>
         tailwind.config = {
             theme: {
@@ -30,8 +30,11 @@
             }
         }
     </script>
+
+    <!-- Custom CSS for elements not handled by Tailwind, like the scrollbar and modal -->
     <style>
         /* Custom scrollbar for a cleaner look */
+
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -62,18 +65,18 @@
         }
     </style>
 </head>
-
 <body class="bg-primary-bg text-dark-text font-roboto">
+
     <!-- Header with Navigation -->
     <header class="bg-white shadow-lg fixed top-0 left-0 right-0 z-50">
         <nav class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
             <div class="text-3xl font-playfair font-bold text-accent-green mb-4 md:mb-0">
-                Customwale Foods
+                 Foods Website
             </div>
             <ul class="flex flex-wrap justify-center md:justify-end space-x-4 md:space-x-8 text-lg font-medium">
+                <li><a href="#story" class="hover:text-accent-green transition-colors duration-300">Our Story</a></li>
                 <li><a href="#menu" class="hover:text-accent-green transition-colors duration-300">Menu</a></li>
                 <li><a href="#reservations" class="hover:text-accent-green transition-colors duration-300">Reservations</a></li>
-                <li><a href="#story" class="hover:text-accent-green transition-colors duration-300">Our Story</a></li>
                 <li><a href="#founders" class="hover:text-accent-green transition-colors duration-300">Founders</a></li>
                 <li><a href="#gallery" class="hover:text-accent-green transition-colors duration-300">Gallery</a></li>
                 <li><a href="#testimonials" class="hover:text-accent-green transition-colors duration-300">Reviews</a></li>
@@ -83,7 +86,9 @@
     </header>
 
     <main class="pt-24 md:pt-32">
+        
         <!-- Hero Section -->
+         
         <section class="hero-section relative bg-cover bg-center h-screen flex items-center justify-center text-center"
                  style="background-image: url('https://placehold.co/1920x1080/4f6f52/e8f8e8?text=Luxury+in+Every+Bite');">
             <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -216,50 +221,173 @@
                 </div>
             </div>
         </section>
+
         
-        <!-- Reservations Section -->
-        <section id="reservations" class="py-20 bg-primary-bg">
-            <div class="container mx-auto px-4 max-w-2xl text-center">
-                <h2 class="text-5xl font-playfair font-bold text-accent-green mb-4" id="reservations-heading">Book a Table</h2>
-                <p class="text-lg text-dark-text mb-8">Experience our bespoke dining service. Reserve your table for an unforgettable culinary journey.</p>
-                <form id="reservation-form" class="bg-white p-8 rounded-xl shadow-xl space-y-6">
-                    <div class="flex flex-col text-left">
-                        <label for="name" class="text-lg font-bold mb-2">Name</label>
-                        <input type="text" id="name" name="name" required class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
-                    </div>
-                    
-                    <div class="flex flex-col text-left">
-                        <label for="email" class="text-lg font-bold mb-2">Email</label>
-                        <input type="email" id="email" name="email" required class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
-                    </div>
+    <!-------------------------------------------------------------- reservation code -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve Your Experience</title>
+    <!-- Use Tailwind CSS for rapid styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use a custom font for a sophisticated look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <style>
+        /* Define a custom color palette using CSS variables for easy updates */
+        :root {
+            --rich-dark: #1f1d1b;
+            --rich-light: #e5e5e5;
+            --accent-gold: #b38867;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Apply a dark, rich background and light text to the body */
+        .bg-rich-dark {
+            background-color: var(--rich-dark);
+        }
+        .text-rich-light {
+            color: var(--rich-light);
+        }
+
+        /* Style the form container with a subtle background and rounded corners */
+        .form-container {
+            background-color: #2a2826;
+        }
+
+        /* Style the input fields to match the dark theme */
+        .form-input {
+            background-color: #3b3937;
+            color: var(--rich-light);
+            border: 1px solid #4a4541;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 2px rgba(179, 136, 103, 0.4);
+        }
+        /* Style for placeholder text */
+        .form-input::placeholder {
+            color: #6a645f;
+        }
+        /* Style for date/time input arrow colors for some browsers */
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="time"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+
+        /* Style the submit button with a gradient and hover effect */
+        .submit-button {
+            background-color: var(--accent-gold);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .submit-button:hover {
+            background-color: #9c7352;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-rich-dark text-rich-light min-h-screen flex flex-col items-center justify-center p-8">
+
+    <!-- Reservations Section -->
+    <section id="reservations" class="w-full">
+        <div class="container mx-auto px-4 max-w-lg text-center">
+            <!-- Header for the reservation form -->
+            <h2 class="text-6xl md:text-7xl font-playfair font-normal mb-4">Reserve Your Experience</h2>
+            <p class="text-md text-[#b3acb1] mb-12 italic">
+                A seamless start to an exquisite evening.
+            </p>
+            
+            <!-- The reservation form itself -->
+            <form id="reservation-form" class="form-container p-8 sm:p-10 rounded-2xl shadow-xl space-y-8">
+                <!-- Name input field -->
+                <div class="flex flex-col text-left">
+                    <label for="name" class="text-sm font-medium uppercase tracking-wider text-[#b3acb1] mb-2">Name</label>
+                    <input type="text" id="name" name="name" required class="p-4 rounded-lg form-input" />
+                </div>
+                
+                <!-- Email input field -->
+                <div class="flex flex-col text-left">
+                    <label for="email" class="text-sm font-medium uppercase tracking-wider text-[#b3acb1] mb-2">Email</label>
+                    <input type="email" id="email" name="email" required class="p-4 rounded-lg form-input" />
+                </div>
+
+                <!-- Phone number input field -->
+                <div class="flex flex-col text-left">
+                    <label for="phone" class="text-sm font-medium uppercase tracking-wider text-[#b3acb1] mb-2">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="p-4 rounded-lg form-input" />
+                </div>
+
+                <!-- Date and Time fields side-by-side on larger screens -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Date input -->
                     <div class="flex flex-col text-left">
-                        <label for="phone" class="text-lg font-bold mb-2">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
+                        <label for="date" class="text-sm font-medium uppercase tracking-wider text-[#b3acb1] mb-2">Date</label>
+                        <input type="date" id="date" name="date" required class="p-4 rounded-lg form-input" />
                     </div>
-    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex flex-col text-left">
-                            <label for="date" class="text-lg font-bold mb-2">Date</label>
-                            <input type="date" id="date" name="date" required class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
-                        </div>
-                        <div class="flex flex-col text-left">
-                            <label for="time" class="text-lg font-bold mb-2">Time</label>
-                            <input type="time" id="time" name="time" required class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
-                        </div>
-                    </div>
-    
+                    <!-- Time input -->
                     <div class="flex flex-col text-left">
-                        <label for="guests" class="text-lg font-bold mb-2">Number of Guests</label>
-                        <input type="number" id="guests" name="guests" min="1" max="10" value="2" required class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-green" />
+                        <label for="time" class="text-sm font-medium uppercase tracking-wider text-[#b3acb1] mb-2">Time</label>
+                        <input type="time" id="time" name="time" required class="p-4 rounded-lg form-input" />
                     </div>
-    
-                    <button type="submit" class="submit-button w-full py-4 bg-accent-green text-white text-xl font-bold rounded-full shadow-lg hover:bg-green-700 transition-transform duration-300 transform hover:scale-105">
-                        Reserve Now
-                    </button>
-                </form>
-            </div>
-        </section>
+                </div>
+
+                <!-- Number of guests input -->
+                <div class="flex flex-col text-left">
+                    <label for="guests" class="text-sm font-medium uppercase tracking-wider text-[#b3acb1] mb-2">Number of Guests</label>
+                    <input type="number" id="guests" name="guests" min="1" max="10" value="2" required class="p-4 rounded-lg form-input" />
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="w-full py-4 text-xl font-medium rounded-lg text-white tracking-wide submit-button">
+                    Confirm Reservation
+                </button>
+
+                <!-- Message box for success/error messages -->
+                <div id="message-box" class="mt-4 p-4 rounded-lg text-center" style="display: none;"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- JavaScript for form submission and message handling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reservationForm = document.getElementById('reservation-form');
+            const messageBox = document.getElementById('message-box');
+
+            // Set today's date as the minimum selectable date
+            const dateInput = document.getElementById('date');
+            const today = new Date().toISOString().split('T')[0];
+            if (dateInput) {
+                dateInput.setAttribute('min', today);
+            }
+
+            // Listen for form submission
+            reservationForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Display a success message
+                messageBox.style.display = 'block';
+                messageBox.textContent = 'Your reservation is confirmed. We look forward to welcoming you!';
+                messageBox.classList.add('bg-[#4a4541]', 'border', 'border-[#5e5a56]');
+                messageBox.classList.add('text-[#c9c5c2]'); // Added class for text color
+                
+                // Reset the form after a short delay and hide the message box
+                setTimeout(() => {
+                    this.reset();
+                    messageBox.style.display = 'none';
+                    messageBox.classList.remove('bg-[#4a4541]', 'border', 'border-[#5e5a56]', 'text-[#c9c5c2]');
+                }, 3000); // Hide after 3 seconds
+            });
+        });
+    </script>
 
         <!-- Founders Section -->
         <section id="founders" class="py-20 bg-white">
@@ -356,73 +484,292 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-accent-green text-white py-8 text-center">
-        <p>&copy; 2025 Customwale Foods. All rights reserved.</p>
-    </footer>
+    <!---------------------------------------------------- CHAT BOT  ------------------------------>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Reservation Bot</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        /* Custom CSS for the chat container to handle positioning */
+        #chat-container {
+            max-width: 400px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        #chat-container.hidden {
+            transform: scale(0.8);
+            opacity: 0;
+            pointer-events: none; /* Make it unclickable when hidden */
+        }
+        #chat-toggle-button {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 1001;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        #chat-toggle-button.hidden {
+            display: none;
+        }
+        .message-bubble {
+            max-width: 85%;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            word-wrap: break-word; /* Ensure long words wrap */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 antialiased">
 
-    <!-- Confirmation Modal HTML -->
-    <div id="reservation-modal" class="modal-backdrop">
-        <div class="modal-content bg-white p-8 rounded-xl shadow-2xl text-center relative max-w-sm w-11/12 mx-auto">
-            <button class="modal-close-btn absolute top-4 right-4 text-gray-500 hover:text-dark-text text-3xl transition-colors duration-300">&times;</button>
-            <h3 class="text-3xl font-playfair font-bold text-accent-green mb-4">Reservation Confirmed!</h3>
-            <p class="text-lg text-dark-text">Thank you for your reservation. We've received your request and will be in touch shortly to confirm all the details.</p>
+    <!-- Toggle Button for the Chatbot -->
+    <div id="chat-toggle-button" class="shadow-lg hover:scale-110">
+        <i class="fas fa-comment text-2xl"></i>
+    </div>
+
+    <!-- Chat Container -->
+    <div id="chat-container" class="bg-white rounded-2xl shadow-lg hidden">
+        
+        <!-- Chat Header -->
+        <div class="bg-blue-600 text-white p-4 rounded-t-2xl text-lg font-bold flex justify-between items-center">
+            <span>AI Reservation Bot</span>
+            <button id="chat-close-button" class="text-white hover:text-gray-300 transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Chat History -->
+        <div id="chat-history" class="overflow-y-auto p-4 flex flex-col space-y-2 flex-grow bg-gray-50">
+            <!-- Messages will be appended here by JavaScript -->
+            <div id="loading-message" class="text-center text-gray-500 py-4 hidden">
+                <i class="fas fa-spinner fa-spin mr-2"></i>
+                <span>Typing...</span>
+            </div>
+        </div>
+
+        <!-- Chat Input Area -->
+        <div id="chat-input-area" class="p-4 flex items-center border-t border-gray-200 rounded-b-2xl bg-white">
+            <input type="text" id="chat-input" placeholder="Type your message..." class="flex-grow p-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow">
+            <button id="send-button" class="bg-blue-600 text-white p-3 rounded-full ml-2 hover:bg-blue-700 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <i class="fas fa-paper-plane"></i>
+            </button>
         </div>
     </div>
 
+    <!-- Confirmation Modal HTML (Re-designed for a cleaner look) -->
+    <div id="reservation-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50 transition-opacity duration-300">
+        <div class="bg-white p-8 rounded-xl shadow-2xl text-center relative max-w-sm w-full transform transition-transform duration-300 scale-95">
+            <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 transition-colors text-3xl">&times;</button>
+            <i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
+            <h3 class="text-3xl font-bold text-gray-800 mb-4">Reservation Confirmed!</h3>
+            <p class="text-lg text-gray-600">Your reservation has been successfully booked. We look forward to seeing you!</p>
+        </div>
+    </div>
+
+    <!----------------------------------------------------------------------------- Footer ------------------------------>
+    <footer class="bg-gray-800 text-gray-400 py-8 text-center mt-20">
+        <div class="container mx-auto px-4">
+            <p class="mb-4 text-lg">&copy; 2025 Foods Website. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://www.instagram.com/your_instagram_page" target="_blank" class="text-gray-400 hover:text-blue-500 transition-colors">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors">
+                    <i class="fab fa-twitter text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors">
+                    <i class="fab fa-facebook-f text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Get all necessary elements from the DOM
-        const reservationForm = document.getElementById('reservation-form');
+        // DOM element references
+        const chatContainer = document.getElementById('chat-container');
+        const chatToggleButton = document.getElementById('chat-toggle-button');
+        const chatCloseButton = document.getElementById('chat-close-button');
+        const chatHistory = document.getElementById('chat-history');
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-button');
+        const loadingMessage = document.getElementById('loading-message');
         const reservationModal = document.getElementById('reservation-modal');
-        const closeModalBtn = document.querySelector('.modal-close-btn');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
 
-        // Add event listener for form submission
-        reservationForm.addEventListener('submit', function(event) {
-            // Prevent the default form submission behavior
-            event.preventDefault();
-            
-            // Get form data (you would send this to a server in a real application)
-            const formData = new FormData(reservationForm);
-            const name = formData.get('name');
-            console.log(`Reservation submitted by: ${name}`);
+        // State variables to manage the conversation flow
+        let chatState = 'initial';
+        const reservationData = {
+            date: null,
+            time: null,
+            guests: null
+        };
 
-            // Simulate a successful form submission by showing the modal
-            reservationModal.style.display = 'flex';
+        // Helper function to create and append a new message bubble
+        function appendMessage(sender, text) {
+            const messageWrapper = document.createElement('div');
+            messageWrapper.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+
+            const messageBubble = document.createElement('div');
+            messageBubble.className = `message-bubble ${sender === 'user' ? 'bg-blue-600 text-white self-end rounded-br-none' : 'bg-gray-200 text-gray-800 self-start rounded-bl-none'}`;
+            messageBubble.innerText = text;
+
+            messageWrapper.appendChild(messageBubble);
+            chatHistory.appendChild(messageWrapper);
+
+            // Scroll to the bottom of the chat history
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+
+        // Function to handle the bot's response based on the current state
+        function handleBotResponse(message) {
+            loadingMessage.classList.remove('hidden'); // Show typing indicator
+
+            let response = '';
             
-            // Reset the form fields after submission
-            reservationForm.reset();
+            // Simple logic for a conversational flow
+            if (chatState === 'initial') {
+                response = "Hello! I'm here to help you book a reservation. What date would you like to reserve? (e.g., 'August 25th', 'tomorrow', or '8/25')";
+                chatState = 'ask_date';
+            } else if (chatState === 'ask_date') {
+                const dateRegex = /(today|tomorrow|((jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*\s+\d{1,2}(st|nd|rd|th)?)|(\d{1,2}(st|nd|rd|th)?\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*)|(\d{1,2}\/\d{1,2}))/i;
+                const match = message.match(dateRegex);
+                if (match) {
+                    reservationData.date = match[0];
+                    response = `Great! Got it for ${reservationData.date}. What time would you prefer? (e.g., '7 PM' or '19:00')`;
+                    chatState = 'ask_time';
+                } else {
+                    response = "I'm sorry, I didn't understand that date. Please provide the date you'd like to book.";
+                }
+            } else if (chatState === 'ask_time') {
+                const timeRegex = /(\d{1,2}(:\d{2})?\s*(am|pm)?|\d{1,2}(:\d{2})?)/i;
+                const match = message.match(timeRegex);
+                if (match) {
+                    reservationData.time = match[0];
+                    response = `Perfect, ${reservationData.time}. And how many guests will be in your party?`;
+                    chatState = 'ask_guests';
+                } else {
+                    response = "I'm sorry, I didn't understand that time. Please provide a time for your reservation.";
+                }
+            } else if (chatState === 'ask_guests') {
+                const guestsRegex = /\b(\d+)\b/;
+                const match = message.match(guestsRegex);
+                if (match && parseInt(match[1]) > 0) {
+                    reservationData.guests = parseInt(match[1]);
+                    // Final confirmation message before showing modal
+                    response = `Thank you! I am now confirming your reservation for ${reservationData.guests} people on ${reservationData.date} at ${reservationData.time}.`;
+                    
+                    // Simulate a delay for the final confirmation and then show the modal
+                    setTimeout(() => {
+                        loadingMessage.classList.add('hidden'); // Hide typing indicator
+                        appendMessage('bot', response);
+                        showModal(); // Show the confirmation modal
+                        chatState = 'initial'; // Reset for a new conversation
+                    }, 1000);
+                    return; // Return early to prevent the second setTimeout
+                } else {
+                    response = "I'm sorry, please provide a valid number of guests.";
+                }
+            }
+            
+            // Simulate AI thinking time
+            setTimeout(() => {
+                loadingMessage.classList.add('hidden'); // Hide typing indicator
+                appendMessage('bot', response);
+            }, 500);
+        }
+
+        // Function to send a message from the user
+        function sendMessage() {
+            const userMessage = chatInput.value.trim();
+            if (userMessage === '') return;
+
+            // Append user's message to the chat history
+            appendMessage('user', userMessage);
+            chatInput.value = '';
+
+            // Get bot's response
+            handleBotResponse(userMessage);
+        }
+
+        // Function to show the reservation modal
+        function showModal() {
+            reservationModal.classList.remove('hidden');
+            // Animate modal in
+            reservationModal.querySelector('div').classList.remove('scale-95');
+            reservationModal.querySelector('div').classList.add('scale-100');
+        }
+
+        // Function to hide the reservation modal
+        function hideModal() {
+            reservationModal.querySelector('div').classList.remove('scale-100');
+            reservationModal.querySelector('div').classList.add('scale-95');
+            setTimeout(() => {
+                reservationModal.classList.add('hidden');
+            }, 300); // Wait for the transition to finish
+        }
+
+        // Event listener for the send button
+        sendButton.addEventListener('click', sendMessage);
+
+        // Event listener for the 'Enter' key in the input field
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
         });
 
-        // Add event listener to close the modal
-        closeModalBtn.addEventListener('click', function() {
-            reservationModal.style.display = 'none';
-        });
+        // Toggle the chat container and button visibility
+        function toggleChat() {
+            chatContainer.classList.toggle('hidden');
+            chatToggleButton.classList.toggle('hidden');
+        }
+
+        // Event listeners for toggling the chat
+        chatToggleButton.addEventListener('click', toggleChat);
+        chatCloseButton.addEventListener('click', toggleChat);
+
+        // Event listener to close the modal
+        modalCloseBtn.addEventListener('click', hideModal);
 
         // Close the modal if the user clicks outside of the content
-        reservationModal.addEventListener('click', function(event) {
+        reservationModal.addEventListener('click', (event) => {
             if (event.target === reservationModal) {
-                reservationModal.style.display = 'none';
+                hideModal();
             }
         });
 
-        // Set today's date as the default and minimum for the date input
-        window.onload = function() {
-            const today = new Date().toISOString().split('T')[0];
-            const dateInput = document.getElementById('date');
-            if (dateInput) {
-                dateInput.setAttribute('min', today);
-                dateInput.value = today;
-            }
+        // Initial message from the bot on page load
+        window.onload = () => {
+            handleBotResponse(''); // Call with an empty message to trigger the initial greeting
         };
     </script>
 </body>
